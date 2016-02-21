@@ -1,0 +1,7 @@
+{{ range $hosts, $containers := groupBy $ "Env.LETSENCRYPT_HOST" }}
+
+{{ range $container := $containers }}{{ $cid := printf "%.12s" $container.ID }}
+{{ range $host := split $hosts "," }}{{ $host }} {{ end }}
+{{ end }}
+
+{{ end }}
